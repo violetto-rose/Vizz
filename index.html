@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   </head>
   <body class="min-h-screen bg-gray-50 p-4">
-    <div id="app" class="max-w-4xl mx-auto">
+    <div id="app" class="max-w-7xl mx-auto">
       <!-- Simple semester selector and visualization -->
     </div>
 
@@ -60,22 +60,23 @@
       // Semester selector component
       function createSemesterSelector(semesters, onSelect) {
         const container = document.createElement('div');
-        container.className = 'mb-6 p-4 bg-white rounded-lg shadow-sm border';
+        container.className =
+          'mb-6 p-6 bg-white rounded-lg shadow-md border border-gray-200';
 
         const title = document.createElement('h1');
-        title.className = 'text-xl font-semibold mb-4 text-gray-800';
+        title.className = 'text-2xl font-bold mb-6 text-gray-900';
         title.textContent = 'Student Progress Visualizer';
 
         const selectContainer = document.createElement('div');
-        selectContainer.className = 'flex items-center gap-3';
+        selectContainer.className = 'flex items-center gap-4';
 
         const label = document.createElement('label');
-        label.className = 'text-sm font-medium text-gray-700';
+        label.className = 'text-sm font-semibold text-gray-700';
         label.textContent = 'Select Semester:';
 
         const select = document.createElement('select');
         select.className =
-          'px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent';
+          'px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900';
 
         // Add default option
         const defaultOption = document.createElement('option');
@@ -115,22 +116,22 @@
         // Student selector
         const selectorContainer = document.createElement('div');
         selectorContainer.className =
-          'p-4 bg-white rounded-lg shadow-sm border';
+          'p-6 bg-white rounded-lg shadow-md border border-gray-200';
 
         const selectorTitle = document.createElement('h2');
-        selectorTitle.className = 'text-lg font-semibold mb-3 text-gray-800';
+        selectorTitle.className = 'text-xl font-bold mb-4 text-gray-900';
         selectorTitle.textContent = `Students in ${semester}`;
 
         const selectContainer = document.createElement('div');
-        selectContainer.className = 'flex items-center gap-3';
+        selectContainer.className = 'flex items-center gap-4';
 
         const label = document.createElement('label');
-        label.className = 'text-sm font-medium text-gray-700';
+        label.className = 'text-sm font-semibold text-gray-700';
         label.textContent = 'Select Student:';
 
         const select = document.createElement('select');
         select.className =
-          'px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-w-[200px]';
+          'px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900 min-w-[200px]';
 
         // Add default option
         const defaultOption = document.createElement('option');
@@ -150,15 +151,15 @@
 
         // Add view mode selector
         const viewModeContainer = document.createElement('div');
-        viewModeContainer.className = 'flex items-center gap-2 ml-4';
+        viewModeContainer.className = 'flex items-center gap-3';
 
         const viewModeLabel = document.createElement('label');
-        viewModeLabel.className = 'text-sm font-medium text-gray-700';
+        viewModeLabel.className = 'text-sm font-semibold text-gray-700';
         viewModeLabel.textContent = 'View Mode:';
 
         const viewModeSelect = document.createElement('select');
         viewModeSelect.className =
-          'px-2 py-1 border border-gray-300 rounded text-sm';
+          'px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900';
         viewModeSelect.id = 'viewMode';
         const viewPlaceholder = document.createElement('option');
         viewPlaceholder.value = '';
@@ -182,16 +183,16 @@
 
         // Add 10th-12th toggle
         const toggleContainer = document.createElement('div');
-        toggleContainer.className = 'flex items-center gap-2 ml-4';
+        toggleContainer.className = 'flex items-center gap-3 ml-6';
 
         const toggleLabel = document.createElement('label');
-        toggleLabel.className = 'text-sm font-medium text-gray-700';
+        toggleLabel.className = 'text-sm font-semibold text-gray-700';
         toggleLabel.textContent = 'Include 10th-12th:';
 
         const toggle = document.createElement('input');
         toggle.type = 'checkbox';
         toggle.className =
-          'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500';
+          'w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500';
         toggle.id = 'include1012';
 
         toggleContainer.appendChild(toggleLabel);
@@ -199,7 +200,7 @@
 
         // Wrap student-specific controls to toggle visibility
         const studentControls = document.createElement('div');
-        studentControls.className = 'flex items-center gap-3 ml-4';
+        studentControls.className = 'flex items-center gap-4 ml-6';
         studentControls.appendChild(label);
         studentControls.appendChild(select);
         studentControls.appendChild(toggleContainer);
@@ -215,27 +216,27 @@
         // Student info container
         const infoContainer = document.createElement('div');
         infoContainer.className =
-          'p-4 bg-white rounded-lg shadow-sm border mb-4';
+          'p-6 bg-white rounded-lg shadow-md border border-gray-200 mb-6';
         infoContainer.style.display = 'none';
 
         const infoTitle = document.createElement('h3');
-        infoTitle.className = 'text-lg font-semibold mb-3 text-gray-800';
+        infoTitle.className = 'text-lg font-bold mb-4 text-gray-900';
         infoTitle.textContent = 'Student Information';
 
         const infoContent = document.createElement('div');
-        infoContent.className = 'grid grid-cols-2 gap-4 text-sm';
+        infoContent.className = 'grid grid-cols-2 gap-6 text-sm';
 
         infoContainer.appendChild(infoTitle);
         infoContainer.appendChild(infoContent);
 
         // Chart container
         const chartContainer = document.createElement('div');
-        chartContainer.className = 'p-4 bg-white rounded-lg shadow-sm border';
+        chartContainer.className =
+          'p-6 bg-white rounded-lg shadow-md border border-gray-200';
         chartContainer.style.display = 'none';
-        chartContainer.style.height = '400px';
 
         const chartTitle = document.createElement('h3');
-        chartTitle.className = 'text-lg font-semibold mb-4 text-gray-800';
+        chartTitle.className = 'text-lg font-bold mb-4 text-gray-900';
         chartTitle.textContent = 'Semester Progress';
 
         const canvas = document.createElement('canvas');
@@ -253,13 +254,19 @@
           const include1012 = toggle.checked;
           const viewMode = viewModeSelect.value;
 
+          console.log('updateView called:', {
+            selectedStudentId,
+            include1012,
+            viewMode
+          });
+
           // Hide all containers initially
           infoContainer.style.display = 'none';
           chartContainer.style.display = 'none';
 
           // Show/hide student controls based on view mode
           const studentControls = document.querySelector(
-            '.flex.items-center.gap-3.ml-4'
+            '.flex.items-center.gap-4.ml-6'
           );
           if (studentControls) {
             studentControls.style.display =
@@ -272,15 +279,41 @@
             chartContainer.innerHTML = '';
             chartContainer.appendChild(batchOverview);
             chartContainer.style.display = 'block';
+            chartContainer.style.height = 'unset';
           } else if (viewMode === 'student' && selectedStudentId) {
             // Show individual student view
+            console.log('Looking for student with ID:', selectedStudentId);
             const selectedStudent = students.find(
               (s) => s.id === selectedStudentId
             );
+            console.log('Found student:', selectedStudent);
             if (!selectedStudent) return;
 
             infoContainer.style.display = 'block';
             chartContainer.style.display = 'block';
+            chartContainer.style.height = 'auto';
+            chartContainer.style.position = 'relative';
+
+            // Restore chart container structure for individual student view
+            chartContainer.innerHTML = '';
+            const chartTitle = document.createElement('h3');
+            chartTitle.className = 'text-lg font-bold mb-4 text-gray-900';
+            chartTitle.textContent = 'Semester Progress';
+
+            const canvas = document.createElement('canvas');
+            canvas.id = 'studentChart';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+
+            // Create a wrapper div for the canvas with fixed height
+            const canvasWrapper = document.createElement('div');
+            canvasWrapper.style.height = '500px';
+            canvasWrapper.style.width = '100%';
+            canvasWrapper.style.position = 'relative';
+            canvasWrapper.appendChild(canvas);
+
+            chartContainer.appendChild(chartTitle);
+            chartContainer.appendChild(canvasWrapper);
 
             // Update student info
             infoContent.innerHTML = `
@@ -308,14 +341,14 @@
                 labels: chartData.labels,
                 datasets: [
                   {
-                    label: `${selectedStudent.name} - Semester Progress`,
+                    label: `${selectedStudent.name}`,
                     data: chartData.values,
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    borderWidth: 2,
+                    borderColor: '#6366f1',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    borderWidth: 3,
                     fill: true,
                     tension: 0.4,
-                    pointBackgroundColor: '#3b82f6',
+                    pointBackgroundColor: '#6366f1',
                     pointBorderColor: '#ffffff',
                     pointBorderWidth: 2,
                     pointRadius: 6,
@@ -326,7 +359,7 @@
               options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                aspectRatio: 2,
+                aspectRatio: 2.5,
                 plugins: {
                   legend: {
                     display: true,
@@ -369,7 +402,10 @@
         // Add event listeners after everything is set up
         select.addEventListener('change', updateView);
         toggle.addEventListener('change', updateView);
-        viewModeSelect.addEventListener('change', updateView);
+        viewModeSelect.addEventListener('change', (e) => {
+          console.log('View mode changed to:', e.target.value);
+          updateView();
+        });
 
         return container;
       }
@@ -380,16 +416,16 @@
         container.className = 'space-y-6';
 
         const title = document.createElement('h2');
-        title.className = 'text-xl font-semibold text-gray-800 mb-4';
+        title.className = 'text-xl font-bold text-gray-900 mb-6';
         title.textContent = `Batch Overview - ${semester}`;
 
         // Create heatmap container
         const heatmapContainer = document.createElement('div');
         heatmapContainer.className =
-          'p-4 bg-white rounded-lg shadow-sm border overflow-x-auto';
+          'p-6 bg-white rounded-lg shadow-md border border-gray-200 overflow-x-auto';
 
         const heatmapTitle = document.createElement('h3');
-        heatmapTitle.className = 'text-lg font-semibold mb-4 text-gray-800';
+        heatmapTitle.className = 'text-lg font-bold mb-4 text-gray-900';
         heatmapTitle.textContent = 'Performance Heatmap';
 
         const heatmapTable = document.createElement('table');
@@ -408,7 +444,7 @@
         // Add student name header
         const nameHeader = document.createElement('th');
         nameHeader.className =
-          'p-2 text-left font-semibold text-gray-700 border-r min-w-[120px] sticky left-0 bg-white z-10';
+          'p-3 text-left font-bold text-gray-900 border-r border-gray-300 min-w-[120px] sticky left-0 bg-white z-10';
         nameHeader.textContent = 'Student';
         headerRow.appendChild(nameHeader);
 
@@ -416,7 +452,7 @@
         semesterColumns.forEach((col) => {
           const th = document.createElement('th');
           th.className =
-            'p-2 text-center font-semibold text-gray-700 border-r min-w-[80px]';
+            'p-3 text-center font-bold text-gray-900 border-r border-gray-300 min-w-[80px]';
           th.textContent = col;
           headerRow.appendChild(th);
         });
@@ -424,14 +460,14 @@
         // Add average header
         const avgHeader = document.createElement('th');
         avgHeader.className =
-          'p-2 text-center font-semibold text-gray-700 border-r min-w-[80px]';
+          'p-3 text-center font-bold text-gray-900 border-r border-gray-300 min-w-[80px]';
         avgHeader.textContent = 'Avg';
         headerRow.appendChild(avgHeader);
 
         // Add backlog header
         const backlogHeader = document.createElement('th');
         backlogHeader.className =
-          'p-2 text-center font-semibold text-gray-700 min-w-[80px]';
+          'p-3 text-center font-bold text-gray-900 min-w-[80px]';
         backlogHeader.textContent = 'Backlog';
         headerRow.appendChild(backlogHeader);
 
@@ -440,12 +476,12 @@
         // Create data rows
         students.forEach((student) => {
           const row = document.createElement('tr');
-          row.className = 'border-b hover:bg-gray-50';
+          row.className = 'border-b border-gray-200 hover:bg-gray-50';
 
           // Student name cell
           const nameCell = document.createElement('td');
           nameCell.className =
-            'p-2 text-sm font-medium text-gray-700 border-r sticky left-0 bg-white z-10';
+            'p-3 text-sm font-semibold text-gray-900 border-r border-gray-300 sticky left-0 bg-white z-10';
           nameCell.textContent = `${student.id} (${student.name})`;
           row.appendChild(nameCell);
 
@@ -455,16 +491,16 @@
             const numValue =
               typeof value === 'number' ? value : parseFloat(value) || 0;
             const cell = document.createElement('td');
-            cell.className = 'p-2 text-center text-sm border-r';
+            cell.className = 'p-3 text-center text-sm border-r border-gray-300';
             cell.textContent = numValue.toFixed(1);
 
             // Color coding based on performance
             if (numValue >= 85) {
-              cell.className += ' bg-green-100 text-green-800';
+              cell.className += ' bg-emerald-100 text-emerald-800';
             } else if (numValue >= 75) {
               cell.className += ' bg-blue-100 text-blue-800';
             } else if (numValue >= 65) {
-              cell.className += ' bg-yellow-100 text-yellow-800';
+              cell.className += ' bg-amber-100 text-amber-800';
             } else if (numValue >= 50) {
               cell.className += ' bg-orange-100 text-orange-800';
             } else {
@@ -476,7 +512,8 @@
 
           // Average cell
           const avgCell = document.createElement('td');
-          avgCell.className = 'p-2 text-center text-sm font-semibold border-r';
+          avgCell.className =
+            'p-3 text-center text-sm font-bold border-r border-gray-300';
           const avg = getStudentAverage(student);
           avgCell.textContent = avg + '%';
           avgCell.className += getColorClass(parseFloat(avg));
@@ -484,13 +521,13 @@
 
           // Backlog cell
           const backlogCell = document.createElement('td');
-          backlogCell.className = 'p-2 text-center text-sm';
+          backlogCell.className = 'p-3 text-center text-sm';
           const backlog = getStudentBacklogs(student);
           backlogCell.textContent = backlog;
           if (backlog > 0) {
-            backlogCell.className += ' bg-red-100 text-red-800 font-semibold';
+            backlogCell.className += ' bg-red-100 text-red-800 font-bold';
           } else {
-            backlogCell.className += ' bg-green-100 text-green-800';
+            backlogCell.className += ' bg-emerald-100 text-emerald-800';
           }
           row.appendChild(backlogCell);
 
@@ -502,27 +539,27 @@
 
         // Add legend
         const legend = document.createElement('div');
-        legend.className = 'mt-4 flex flex-wrap gap-4 text-sm';
+        legend.className = 'mt-6 flex flex-wrap gap-6 text-sm';
         legend.innerHTML = `
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-green-100 border border-green-300"></div>
-            <span>85%+ (Excellent)</span>
+            <div class="w-4 h-4 bg-emerald-100 border border-emerald-300 rounded"></div>
+            <span class="font-medium">85%+ (Excellent)</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-blue-100 border border-blue-300"></div>
-            <span>75-84% (Good)</span>
+            <div class="w-4 h-4 bg-blue-100 border border-blue-300 rounded"></div>
+            <span class="font-medium">75-84% (Good)</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-yellow-100 border border-yellow-300"></div>
-            <span>65-74% (Average)</span>
+            <div class="w-4 h-4 bg-amber-100 border border-amber-300 rounded"></div>
+            <span class="font-medium">65-74% (Average)</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-orange-100 border border-orange-300"></div>
-            <span>50-64% (Below Average)</span>
+            <div class="w-4 h-4 bg-orange-100 border border-orange-300 rounded"></div>
+            <span class="font-medium">50-64% (Below Average)</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-red-100 border border-red-300"></div>
-            <span><50% (Poor)</span>
+            <div class="w-4 h-4 bg-red-100 border border-red-300 rounded"></div>
+            <span class="font-medium"><50% (Poor)</span>
           </div>
         `;
 
@@ -538,16 +575,22 @@
         const columns = Object.keys(data);
 
         if (include1012) {
-          return [...columns.slice(2, 4), ...columns.slice(4, -3)];
+          // Include 10th-12th (columns 2-3) + semesters (columns 4 to last-1 or last-2)
+          const hasAverage = columns.length > 10; // 7th sem has 12 columns, 5th sem has 9
+          const semesterEnd = hasAverage ? -2 : -1;
+          return [...columns.slice(2, 4), ...columns.slice(4, semesterEnd)];
         } else {
-          return columns.slice(4, -3);
+          // Only semesters (columns 4 to last-1 or last-2, excluding average and backlog)
+          const hasAverage = columns.length > 10; // 7th sem has 12 columns, 5th sem has 9
+          const semesterEnd = hasAverage ? -2 : -1;
+          return columns.slice(4, semesterEnd);
         }
       }
 
       function getColorClass(value) {
-        if (value >= 85) return ' bg-green-100 text-green-800';
+        if (value >= 85) return ' bg-emerald-100 text-emerald-800';
         if (value >= 75) return ' bg-blue-100 text-blue-800';
-        if (value >= 65) return ' bg-yellow-100 text-yellow-800';
+        if (value >= 65) return ' bg-amber-100 text-amber-800';
         if (value >= 50) return ' bg-orange-100 text-orange-800';
         return ' bg-red-100 text-red-800';
       }
@@ -556,15 +599,22 @@
         const data = student.data;
         const columns = Object.keys(data);
 
-        // Based on structure: Column 1=Name, 2=USN, 3-4=10th-12th, 5 to last-3=semesters, last-2=avg, last=backlog
+        // Based on structure: Column 1=Name, 2=USN, 3-4=10th-12th, 5 to last-1 or last-2=semesters, last or last-1=backlog
         let semesterColumns;
 
         if (include1012) {
-          // Include 10th-12th (columns 3-4) + semesters (columns 5 to last-3)
-          semesterColumns = [...columns.slice(2, 4), ...columns.slice(4, -3)];
+          // Include 10th-12th (columns 3-4) + semesters (columns 5 to last-1 or last-2)
+          const hasAverage = columns.length > 10; // 7th sem has 12 columns, 5th sem has 9
+          const semesterEnd = hasAverage ? -2 : -1;
+          semesterColumns = [
+            ...columns.slice(2, 4),
+            ...columns.slice(4, semesterEnd)
+          ];
         } else {
-          // Only semesters (columns 5 to last-3)
-          semesterColumns = columns.slice(4, -3);
+          // Only semesters (columns 5 to last-1 or last-2)
+          const hasAverage = columns.length > 10; // 7th sem has 12 columns, 5th sem has 9
+          const semesterEnd = hasAverage ? -2 : -1;
+          semesterColumns = columns.slice(4, semesterEnd);
         }
 
         const labels = semesterColumns;
@@ -580,13 +630,32 @@
         const data = student.data;
         const columns = Object.keys(data);
 
-        // Last-2 column is average
-        if (columns.length >= 2) {
+        // Check if there's a pre-calculated average column (7th sem has it, 5th sem doesn't)
+        const hasAverage = columns.length > 10; // 7th sem has 12 columns, 5th sem has 9
+
+        if (hasAverage) {
+          // Use the pre-calculated average column (second to last)
           const avgColumn = columns[columns.length - 2];
           const value = data[avgColumn];
           return typeof value === 'number'
             ? value.toFixed(2)
             : parseFloat(value || 0).toFixed(2);
+        } else {
+          // Calculate average from semester columns (excluding 10th-12th and backlog)
+          const semesterColumns = columns.slice(4, -1); // From index 4 to last-1
+          const semesterValues = semesterColumns
+            .map((col) => {
+              const value = data[col];
+              return typeof value === 'number' ? value : parseFloat(value) || 0;
+            })
+            .filter((val) => val > 0); // Filter out zero/empty values
+
+          if (semesterValues.length > 0) {
+            const average =
+              semesterValues.reduce((sum, val) => sum + val, 0) /
+              semesterValues.length;
+            return average.toFixed(2);
+          }
         }
 
         return '0.00';
@@ -632,7 +701,7 @@
 
         // Create semester selector
         const selector = createSemesterSelector(
-          ['5thSem', '7thSem'],
+          ['5th-Sem', '7th-Sem'],
           async (semester) => {
             console.log('Loading semester:', semester);
             if (!state.semesterData[semester]) {
